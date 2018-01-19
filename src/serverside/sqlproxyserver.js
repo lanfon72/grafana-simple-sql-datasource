@@ -34,7 +34,7 @@ SQLProxyServer.prototype.execCommand = function(req){
             .then(api => api.execute());
   }
 SQLProxyServer.prototype.getConnection = function(req){
-    var consrc = [/con\=(.*)/.exec(req.url)[1], req.query.con, req.body.url];
+    var consrc = [/\??con\=(.*)/.exec(req.url)[1], req.query.con, req.body.url];
     req.body.url = consrc.filter(s => s)[0];
   }
 SQLProxyServer.prototype.runStandalone = function(){
